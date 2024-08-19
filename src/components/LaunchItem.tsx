@@ -31,4 +31,4 @@ const LaunchItem: React.FC<LaunchItemProps> = ({ id, site, mission, rocket, isBo
   );
 };
 
-export default LaunchItem;
+export default React.memo(LaunchItem);
