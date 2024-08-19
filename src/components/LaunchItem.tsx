@@ -3,23 +3,30 @@ import React from 'react';
 interface LaunchItemProps {
   launch: {
     id: string;
-    mission_name: string;
+    site: string;
+    mission: {
+      name: string;
+      missionPatch?: string | null;
+    };
     rocket: {
-      rocket_name: string;
+      name: string;
+      type: string;
     };
-    launch_site: {
-      site_name: string;
-    };
+    isBooked: boolean;
   };
 }
 
 const LaunchItem: React.FC<LaunchItemProps> = ({ launch }) => {
   return (
     <div className="launch-item">
-      <h3>{launch.mission_name}</h3>
-      <p><strong>Rocket:</strong> {launch.rocket.rocket_name}</p>
-      <p><strong>Launch Site:</strong> {launch.launch_site.site_name}</p>
+      <h3>{launch.mission.name}</h3>
+      {launch.mission.missionPatch && (
+        <img src={launch.mission.missionPatch} alt={`${launch.mission.name} patch`} />
+      )}
+      <p><strong>Rocket:</strong> {launch.rocket.name} ({launch.rocket.type})</p>
+      <p><strong>Launch Site:</strong> {launch.site}</p>
       <p><strong>ID:</strong> {launch.id}</p>
+      <p><strong>Booked:</strong> {launch.isBooked ? 'Yes' : 'No'}</p>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import LaunchList from './components/LaunchList';
+import './App.css';
 
 const App: React.FC = () => {
   return (
