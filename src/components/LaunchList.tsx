@@ -1,5 +1,3 @@
-// src/components/LaunchList.tsx
-
 import React, { useEffect } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import LaunchItem from './LaunchItem';
@@ -33,7 +31,7 @@ const LaunchList: React.FC = () => {
   });
 
   const loadMoreLaunches = () => {
-    if (data && data.launches.hasMore) {
+    if (data?.launches.hasMore) {
       fetchMore({
         variables: {
           after: data.launches.cursor,
@@ -53,13 +51,13 @@ const LaunchList: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [data]);
 
-  if (loading && !data) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="launch-list">
-      {data.launches.launches.map((launch: any) => (
-        <LaunchItem key={launch.id} launch={launch} />
+      {data?.launches.launches.map((launch: any) => (
+        <LaunchItem key={launch.id} {...launch} />
       ))}
     </div>
   );
