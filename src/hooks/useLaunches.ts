@@ -2,7 +2,7 @@
 
 import { gql, useQuery } from '@apollo/client';
 
-const GET_LAUNCHES = gql`
+export const GET_LAUNCHES = gql`
   query GetLaunches($limit: Int!, $after: String) {
     launches(pageSize: $limit, after: $after) {
       launches {
