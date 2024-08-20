@@ -2,6 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import LaunchList from './LaunchList';
 import { GET_LAUNCHES } from '../hooks/useLaunches';
+import React from 'react';
 
 const mocks = [
   {
